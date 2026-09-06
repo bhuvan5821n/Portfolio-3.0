@@ -15,8 +15,7 @@
     },
     "backend": {
       "root": "backend/",
-      "framework": "fastify",
-      "entrypoint": "src/index.ts:app"
+      "framework": "fastify"
     }
   },
   "rewrites": [

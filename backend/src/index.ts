@@ -83,21 +83,20 @@ async function registerSwagger(app: ReturnType<typeof Fastify>) {
   });
 }
 
+// Vercel entrypoint: export the built app for serverless functions.
+// Local standalone: run this file directly to start the HTTP server.
 if (process.env.VITEST === undefined) {
   const { initDb } = await import("./database/index.js");
   const { seed } = await import("./seed/index.js");
 
-  try {
-    await initDb();
-    seed();
+  await initDb();
+  seed();
+}
 
-    const app = await buildApp();
-    const config = getConfig();
+export const app = process.env.VITEST === undefined ? await buildApp() : undefined;
 
-    await app.listen({ port: config.env.PORT, host: "0.0.0.0" });
-    console.log(`Portfolio 3.0 API running on port ${config.env.PORT}`);
-  } catch (err) {
-    console.error("Failed to start server:", err);
-    process.exit(1);
-  }
+if (process.env.VITEST === undefined && process.env.VERCEL === undefined) {
+  const config = getConfig();
+  await app!.listen({ port: config.env.PORT, host: "0.0.0.0" });
+  console.log(`Portfolio 3.0 API running on port ${config.env.PORT}`);
 }

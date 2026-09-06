@@ -269,11 +269,16 @@ async function initPostgres(): Promise<AppDb> {
 
 export function saveDb(): void {
   if (_driver === "sqlite" && _sqlDb) {
-    const data = _sqlDb.export();
-    const dbPath = path.resolve(process.cwd(), "data", "portfolio.db");
-    const dir = path.dirname(dbPath);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(dbPath, Buffer.from(data));
+    try {
+      const data = _sqlDb.export();
+      const dbPath = path.resolve(process.cwd(), "data", "portfolio.db");
+      const dir = path.dirname(dbPath);
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(dbPath, Buffer.from(data));
+    } catch {
+      // Vercel serverless has a read-only filesystem — silently skip persistence.
+      // Contact submissions and other writes are held in memory only.
+    }
   }
 }
 

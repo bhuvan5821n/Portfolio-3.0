@@ -1,0 +1,45 @@
+{
+  "name": "portfolio-3-backend",
+  "version": "1.0.0",
+  "description": "Portfolio 3.0 CHRONO//ROOTS backend API",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "smoke": "pwsh -File scripts/smoke-test.ps1",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "seed": "tsx src/seed/index.ts",
+    "docs:export": "tsx src/docs/export.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.0",
+    "@fastify/helmet": "^13.0.0",
+    "@fastify/rate-limit": "^10.0.0",
+    "@fastify/swagger": "^9.0.0",
+    "@fastify/swagger-ui": "^5.0.0",
+    "@trigger.dev/sdk": "^3.0.0",
+    "drizzle-orm": "^0.35.0",
+    "pg": "^8.13.0",
+    "sql.js": "^1.11.0",
+    "fastify": "^5.0.0",
+    "pino": "^9.0.0",
+    "pino-pretty": "^11.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.0",
+    "@types/sql.js": "^1.4.7",
+    "@types/node": "^22.0.0",
+    "drizzle-kit": "^0.25.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.0.0"
+  }
+}

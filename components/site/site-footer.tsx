@@ -1,0 +1,3 @@
+﻿import Link from "next/link";
+import {seasons} from "@/data/seasons";
+export function SiteFooter(){return <footer className="site-footer wrap"><div className="footer-invitation"><p className="eyebrow">The next branch is a conversation.</p><h2>Let’s compare notes.</h2><Link className="text-link" href="/profile#contact">Get in touch <span aria-hidden="true">↗</span></Link></div><nav className="footer-map" aria-label="Footer navigation">{seasons.map(s=><Link key={s.id} href={s.href}><small>{s.id}</small>{s.label}</Link>)}</nav><div className="footer-bottom"><span>CHRONO//ROOTS</span><span>Bhuvan Gowda P · Bengaluru, India</span><span>A work in continuous growth.</span></div></footer>;}

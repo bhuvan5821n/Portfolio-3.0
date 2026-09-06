@@ -1,0 +1,8 @@
+﻿import Link from "next/link";
+import {PageHeading} from "@/components/chrono/page-heading";
+import {Phyllotaxis} from "@/components/chrono/phyllotaxis";
+import {currentlyLearning} from "@/data/capabilities";
+import {projects} from "@/data/projects";
+import {routeMetadata} from "@/lib/metadata";
+export const metadata=routeMetadata.experiments;
+export default function Lab(){return <><PageHeading season="Summer" era="Experimental systems" title={<>Room for<br/>the unknown.</>}><p>Small tests. Unfinished ideas. The useful space between “what if” and “it works.”</p></PageHeading><div className="wrap"><Phyllotaxis/></div><section className="chapter wrap"><div className="section-top"><div><p className="eyebrow">On the workbench</p><h2>Still asking questions.</h2></div><p>Experiments are allowed to be unfinished. Their status stays visible.</p></div><div className="experiment-list">{projects.filter(p=>['space-shooter','procedural-frontier','friday'].includes(p.slug)).map(p=><article key={p.slug}><span className="eyebrow">{p.status??'Documentation in progress'}</span><h3>{p.name}</h3><p>{p.description}</p><Link className="text-link" href={`/projects/${p.slug}`}>Open experiment ↗</Link></article>)}</div></section><section className="chapter wrap learning"><p className="eyebrow">Currently learning</p><h2>Follow the next branch.</h2>{currentlyLearning.map(item=><details key={item.name}><summary>{item.name}<span aria-hidden="true">+</span></summary><p>{item.detail}</p><div className="actions">{item.relatedProjectSlugs.map(slug=><Link key={slug} href={`/projects/${slug}`} className="text-link">{projects.find(p=>p.slug===slug)?.name} ↗</Link>)}</div></details>)}</section></>;}

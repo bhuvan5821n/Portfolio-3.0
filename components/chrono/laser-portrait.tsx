@@ -1,0 +1,4 @@
+"use client";
+import {useState} from "react";
+import {creative} from "@/data/creative";
+export function LaserPortrait(){const [scan,setScan]=useState(false);return <figure className="identity-art"><picture>{scan&&<source media="(prefers-reduced-motion: reduce)" srcSet="/media/chrono/bhuvan-laser-static.svg"/>}<img src={scan?creative.laser.source:'/media/hero-delivery/compact/frame_080.webp'} alt={scan?'Bhuvan’s original two-dimensional binary laser portrait':'Black-and-white portrait of Bhuvan Gowda P'} width="840" height="540"/></picture><button className="button" type="button" aria-pressed={scan} onClick={()=>setScan(s=>!s)}>{scan?'Show portrait':'Reveal GitHub scan artwork'}</button><figcaption>{scan?creative.laser.description:'Personal portrait from the supplied cinematic sequence.'} {scan&&<a href={creative.laser.href} target="_blank" rel="noreferrer">Original artwork ↗</a>}</figcaption></figure>;}

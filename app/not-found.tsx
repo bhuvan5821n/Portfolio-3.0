@@ -1,0 +1,2 @@
+﻿import Link from "next/link";
+export default function NotFound(){return <section className="chapter wrap not-found"><p className="eyebrow">404 / An uncharted branch</p><h1>This path ends here.</h1><p>The page may have moved, or the address may be incomplete.</p><Link className="button primary" href="/">Return home ↗</Link><Link className="text-link" href="/projects">Explore projects ↗</Link></section>;}

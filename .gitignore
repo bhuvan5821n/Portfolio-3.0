@@ -1,0 +1,35 @@
+# Dependencies and builds
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Environment and credentials
+.env
+.env.local
+.env.*.local
+.env*
+!.env.example
+
+# Runtime persistence
+backend/data/*.db
+backend/data/*.db-*
+backend/data/*.sqlite
+backend/data/*.sqlite3
+
+# Test, browser, and review output
+playwright-report/
+test-results/
+.playwright-cli/
+review-artifacts/
+.checkpoints/
+
+# Logs and local editor/OS state
+*.log
+npm-debug.log*
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini

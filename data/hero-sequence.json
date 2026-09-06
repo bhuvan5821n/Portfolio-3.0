@@ -1,0 +1,15 @@
+{
+  "prefix": "/media/hero-sequence/frame_",
+  "extension": ".jpg",
+  "padding": 3,
+  "start": 1,
+  "end": 161,
+  "missing": [
+    157
+  ],
+  "count": 160,
+  "dimensions": {
+    "width": 1280,
+    "height": 720
+  }
+}
